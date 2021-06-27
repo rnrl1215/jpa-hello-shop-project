@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/c:/springstudy/db/jpashop
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create #자동으로 table을 생성해주는 모드
+    properties:
+      hibernate:
+        show_sql: true #systemout 으로 찍음 운영 환경에서는 사용하지 말아야 된다.
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug #로거를 통해서 로그를 찍는다.
+    org.hibernate.type: trace

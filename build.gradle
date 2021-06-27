@@ -19,8 +19,17 @@ dependencies {
 	// 코드 수정시 자동으로 반영과 같은 개발을 도와주는 라이브러리
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.projectlombok:lombok:1.18.18'
+	annotationProcessor('org.projectlombok:lombok')
+	implementation 'junit:junit:4.12'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//JUnit4 추가
+	testImplementation("org.junit.vintage:junit-vintage-engine") {
+		exclude group: "org.hamcrest", module: "hamcrest-core"
+	}
+
+    testImplementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
+
 }
 
 test {
