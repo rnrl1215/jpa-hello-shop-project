@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MemberRepositoryTest {
+/*
 
     @Autowired MemberRepository memberRepository;
 
@@ -20,6 +21,7 @@ public class MemberRepositoryTest {
     @Rollback(false) // 테스트 코드이기 때문에 자동으로 롤백함
                      // 롤백을 false 로 해줘야 한다.
     public void testMember() {
+
         Member member = new Member();
         member.setUsername("memberA");
         Long savedId = memberRepository.save(member);
@@ -31,7 +33,7 @@ public class MemberRepositoryTest {
         // 같은 트랜잭션 안이기 때문에 동일하다.
         // 영속성 때문에
         Assertions.assertThat(findMember).isEqualTo(member); //JPA 엔티티 동일성 보장
-        
 
     }
+     */
 }
