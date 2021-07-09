@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Getter @Setter
 public class Category {
@@ -26,10 +28,18 @@ public class Category {
     private List<Item> items = new ArrayList<>();
 
     // 자기 자신 맵핑
-    @ManyToOne // 부모 정의
+    @ManyToOne(fetch = LAZY) // 부모 정의
     @JoinColumn(name = "parent_id")
     private Category parent;
 
     @OneToMany(mappedBy = "parent")
     private  List<Category> child = new ArrayList<>();
+
+    //==연관관계메서드 양방향일때 쓰면좋다==//
+    //child 를 집어넣으면 부모와 자식 다 들어가야한다.
+    public void addChildCategory(Category child)  {
+        this.child.add(child);
+        child.setParent(this);
+    }
+
 }

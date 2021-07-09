@@ -25,4 +25,5 @@ public class Member {
     // 맵핑을 하는것이 아니라 매핑을 당하는것이다.
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+
 }
