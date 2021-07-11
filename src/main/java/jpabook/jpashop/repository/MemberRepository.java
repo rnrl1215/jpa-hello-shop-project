@@ -12,19 +12,20 @@ import java.util.List;
 public class MemberRepository {
 
 
-    // 아래를 주석 처리한 이유는 @RequiredArgsConstructor 가 있기 때문이다.
-    //  @RequiredArgsConstructor 는 final 로된 것을 자동으로 주입해준다.
-
-    //@PersistenceContext //해당 어노테이션이 있으면 자동으로 스프링이
-                         // EntityManager를 주입해준다.
 
     //@Autowired로는 EntityManger 가 주입이 원래 안되지만 스프링부트가 지원해준다.
-    // 위처럼 @PersistenceContext 를 써준다.
+
+
+    // 아래를 주석 처리한 이유는 @RequiredArgsConstructor 가 있기 때문이다.
+    // @RequiredArgsConstructor 는 final 로된 것을 자동으로 주입해준다.
+
+    //@PersistenceContext //해당 어노테이션이 있으면 자동으로 스프링이
+    // EntityManager를 주입해준다.
     private final EntityManager em;
 
     public void save(Member  member) {
         // member 가 저장됨
-        // persist 를 한다고 insert 문이 나가지 않는다.
+        // @GeneratedValue 전략에서는  persist 를 한다고 insert 문이 나가지 않는다.
         // DB 마다 다르긴하다.
         em.persist(member);
     }

@@ -51,6 +51,7 @@ public class MemberServiceTest {
         member2.setName("kim");
 
         memberService.join(member1);
+        memberService.join(member2); // 예외 발생.
 
         /* 위에 @Test(expected = IllegalStateException.class) 을 넣어 줘서
         * 발생한 예외가 IllegalStateException 이면 된다는 뜻이다.
