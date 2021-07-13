@@ -19,7 +19,7 @@ import java.util.List;
 
 // type에 따라서 무엇을 해줄것인지.
 @DiscriminatorColumn(name = "dtype")
-@Getter
+@Getter @Setter
 public abstract class Item {
 
     @Id

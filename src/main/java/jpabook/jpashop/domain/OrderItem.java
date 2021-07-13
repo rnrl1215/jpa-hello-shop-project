@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +12,9 @@ import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter @Setter
+
+// 생성자 생성을 외부에서 하지 못하도록 접근은 protected로함
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
     @Id
@@ -46,6 +51,6 @@ public class OrderItem {
     }
 
     public int getTotalPrice() {
-       return getOrderPrice() * getCount();
+        return getOrderPrice() * getCount();
     }
 }
