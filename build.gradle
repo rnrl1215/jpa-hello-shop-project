@@ -24,6 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	// 코드 수정시 자동으로 반영과 같은 개발을 도와주는 라이브러리
 	implementation 'org.springframework.boot:spring-boot-devtools'
+
 	implementation 'org.projectlombok:lombok:1.18.18'
 	annotationProcessor('org.projectlombok:lombok')
 	implementation 'junit:junit:4.12'
