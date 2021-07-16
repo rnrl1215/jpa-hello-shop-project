@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.nio.channels.FileChannel;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -51,5 +52,12 @@ public class MemberController {
 
         // 첫번쨰 페이지로 넘어감.
         return "redirect:/";
+    }
+
+
+    @GetMapping("/members")
+    public String list(Model model) {
+        model.addAttribute("members", memberService.findMembers());
+        return "members/memberList";
     }
 }
