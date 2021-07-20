@@ -1,9 +1,11 @@
 package jpabook.jpashop.repository;
 
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.hamcrest.collection.IsEmptyCollection;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -23,7 +25,6 @@ public class ItemRepository {
             em.merge(item);
         }
     }
-
 
     public Item findOne(Long id) {
         return em.find(Item.class, id);

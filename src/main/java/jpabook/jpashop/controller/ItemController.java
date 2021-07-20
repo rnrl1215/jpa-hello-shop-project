@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,15 +28,15 @@ public class ItemController {
     @PostMapping("/items/new")
     public String create(BookForm form) {
 
-        //setter를 사용하는건 좋은 코드는 아니다.
         Book book = new Book();
+        book.setId(form.getId());
         book.setName(form.getName());
         book.setPrice(form.getPrice());
         book.setStockQuantity(form.getStockQuantity());
         book.setAuthor(form.getAuthor());
         book.setIsbn(form.getIsbn());
 
-        itemService.save(book);
+        itemService.saveItem(book);
         return "redirect:/";
     }
 
@@ -58,9 +59,30 @@ public class ItemController {
         form.setName(item.getName());
         form.setPrice(item.getPrice());
         form.setStockQuantity(item.getStockQuantity());
+        form.setAuthor(item.getAuthor());
         form.setIsbn(item.getIsbn());
 
         model.addAttribute("form", form);
         return "items/updateItemForm";
+    }
+
+    //ModelAttribute 그대로 폼이 넘어온다.
+    @PostMapping("items/{itemId}/edit")
+    public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form)
+    {
+        //Book book = new Book();
+        //book.setId(form.getId());
+        //book.setName(form.getName());
+        //book.setPrice(form.getPrice());
+        //book.setStockQuantity(form.getStockQuantity());
+        //book.setAuthor(form.getAuthor());
+        //book.setIsbn(form.getIsbn());
+
+        //itemService.saveItem(book);
+
+        // 객체를 생성해서 저장하는 것이 아니라 업데이트를 한다.
+        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
+
+        return "redirect:items";
     }
 }
